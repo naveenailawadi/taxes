@@ -1,4 +1,4 @@
-from core.handler import RevenueHandler
+from core.handlers import RevenueHandler
 import sys
 
 NAME_COL = 'Name'

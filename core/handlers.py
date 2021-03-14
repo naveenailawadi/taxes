@@ -11,6 +11,9 @@ class BaseHandler:
         # load the initial csv
         self.load_csv()
 
+        # clean the csv
+        self.clean_csv()
+
     # create a loading function
     def load_csv(self):
         # check if the filename exists
@@ -19,6 +22,11 @@ class BaseHandler:
         else:
             # create the csv and notify the user
             self.df = pd.DataFrame(settings.BASE_STRUCTURE)
+
+    # make a function to clean the csv
+    def clean_csv(self):
+        self.df.replace(',', '', regex=True, inplace=True)
+        self.df.replace('$', '', regex=True, inplace=True)
 
     # create a function to save the csv
     def save_csv(self):
@@ -60,9 +68,6 @@ class RevenueHandler(BaseHandler):
     def filter_amounts(self, column, greater_than_cutoff=0):
         # load the most recent csv
         self.load_csv()
-
-        # strip the column of commas
-        self.df.replace(',', '', regex=True, inplace=True)
 
         # translate the column to floats
         self.df[column] = self.df[column].astype(float)

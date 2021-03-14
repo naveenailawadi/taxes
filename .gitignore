@@ -1,6 +1,7 @@
 # confidential stuff
 *.csv
 *.xlsx
+*.pdf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
